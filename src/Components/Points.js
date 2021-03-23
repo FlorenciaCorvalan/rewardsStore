@@ -1,0 +1,66 @@
+import React, { useContext, useState } from "react";
+import { userContext } from "../Context/UserContext";
+import postCoins from "../Context/context";
+import Loading from "./Components/Loads";
+
+export default function Points() {
+  const [window, setWindow] = useState("");
+  const { setPoints } = useContext(userContext);
+  const [loading, setLoading] = useState(false);
+
+  return (
+    <>
+      <div>
+        <button
+          onClick={() =>
+            postCoins(1000)
+              .then(
+                (data) => (
+                  setWindow(data.window),
+                  setPoints(data["New Points"]),
+                  setLoading(true)
+                )
+              )
+              .then(() => setLoading(false))
+          }
+        >
+          1000
+        </button>
+
+        <button
+          onClick={() =>
+            postCoins(5000)
+              .then(
+                (data) => (
+                  setWindow(data.window),
+                  setPoints(data["New Points"]),
+                  setLoading(true)
+                )
+              )
+              .then(() => setLoading(false))
+          }
+        >
+          5000
+        </button>
+
+        <button
+          onClick={() =>
+            postCoins(7500)
+              .then(
+                (data) => (
+                  setWindow(data.window),
+                  setPoints(data["New Points"]),
+                  setLoading(true)
+                )
+              )
+              .then(() => setLoading(false))
+          }
+        >
+          7500
+        </button>
+      </div>
+
+      <p>{loading == true ? <Loading /> : <p>{window}</p>}</p>
+    </>
+  );
+}

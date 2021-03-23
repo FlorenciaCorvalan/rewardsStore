@@ -13,8 +13,8 @@ const history = 'https://coding-challenge-api.aerolab.co/user/history';
 export const fetchUser = async () => {
     try {
         const response = await fetch(user, { method: "GET", headers});
-        const info = await response.json();
-        return info;
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.log(error);
     }
@@ -27,8 +27,8 @@ export const postCoins = async (amount) => {
             headers,
             body: JSON.stringify({ amount: amount}),
         });
-        const info = await response.json();
-        return info;
+        const data = await response.json();
+        return data;
     } catch (error) {
         console.log(error);
     }
@@ -41,8 +41,8 @@ export const getRedeem = async (productId) => {
             headers,
             body: JSON.stringify({ productId: productId}),
         });
-        const info = await response.json();
-        return info;
+        const data = await response.json();
+        return data;
     } catch (error){
         console.log(error);
     }
