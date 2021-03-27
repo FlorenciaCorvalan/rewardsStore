@@ -1,8 +1,15 @@
+import React from "react";
+import { Router } from "@reach/router";
+import { UserProvider } from "./Context/UserContext"
+
+
 function App() {
   return (
-    <div className="App">
+    <UserProvider>
+      
       <p>hola</p>
-    </div>
+      
+    </UserProvider>
   );
 }
 
