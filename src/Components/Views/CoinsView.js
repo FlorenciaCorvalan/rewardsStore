@@ -13,7 +13,7 @@ export default function Coins({ clicka, hide }) {
                 <div>
                   <h6>How many coins do you want to add?</h6>
                   <button onClick={hide}>
-                    <span>Close</span>
+                    <span aria-hidden="true">Close</span>
                   </button>
                   <div>
                     <Points />

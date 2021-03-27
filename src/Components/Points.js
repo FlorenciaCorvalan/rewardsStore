@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import { userContext } from "../Context/UserContext";
+import { UserContext } from "../Context/UserContext";
 import postCoins from "../Context/context";
 import Loading from "./Components/Loads";
 
 export default function Points() {
   const [window, setWindow] = useState("");
-  const { setPoints } = useContext(userContext);
+  const { setPoints } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
 
   return (
@@ -60,7 +60,7 @@ export default function Points() {
         </button>
       </div>
 
-      <p>{loading == true ? <Loading /> : <p>{window}</p>}</p>
+      <p>{loading == true ? <Loading /> : <p className="CoinsAdded">{window}</p>}</p>
     </>
   );
 }
