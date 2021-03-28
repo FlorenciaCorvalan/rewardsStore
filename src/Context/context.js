@@ -4,11 +4,11 @@ export const headers = {
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDE0YzQ0MDdlNzE4NzAwMjBlMzhlZWUiLCJpYXQiOjE2MTE5NzM2OTZ9.HjdXeC-ct5_9dcz1s1wBSktBWKpaGD8ymQoXMsyoxHU",
     };
 
-const user = 'https://coding-challenge-api.aerolab.co/user/me';
-const products = 'https://coding-challenge-api.aerolab.co/products';
-const coins = 'https://coding-challenge-api.aerolab.co/user/points';
-const redeem = 'https://coding-challenge-api.aerolab.co/redeem';
-const history = 'https://coding-challenge-api.aerolab.co/user/history';
+export const user = 'https://coding-challenge-api.aerolab.co/user/me';
+export const productsUrl = 'https://coding-challenge-api.aerolab.co/products';
+export const coins = 'https://coding-challenge-api.aerolab.co/user/points';
+export const redeem = 'https://coding-challenge-api.aerolab.co/redeem';
+export const history = 'https://coding-challenge-api.aerolab.co/user/history';
 
 export const fetchUser = async () => {
     try {
