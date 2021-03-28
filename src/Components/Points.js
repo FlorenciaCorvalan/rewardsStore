@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Context/UserContext";
-import postCoins from "../Context/context";
-import Loading from "./Components/Loads";
+import { postCoins } from "../Context/context";
+import Loading from "./Loads";
 
 export default function Points() {
   const [window, setWindow] = useState("");

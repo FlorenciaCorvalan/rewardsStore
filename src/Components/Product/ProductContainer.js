@@ -12,7 +12,7 @@ export default function ProductContainer() {
   const { productData, setProductData, category } = useContext(UserContext);
 
   useEffect(() => {
-    fetchProductList = async () => {
+    const fetchProductList = async () => {
       setLoading(true);
       const response = await fetch(productsUrl, { method: "GET", headers });
       const data = await response.json();
