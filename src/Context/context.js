@@ -6,9 +6,9 @@ export const headers = {
 
 export const user = 'https://coding-challenge-api.aerolab.co/user/me';
 export const productsUrl = 'https://coding-challenge-api.aerolab.co/products';
-export const coins = 'https://coding-challenge-api.aerolab.co/user/points';
-export const redeem = 'https://coding-challenge-api.aerolab.co/redeem';
-export const history = 'https://coding-challenge-api.aerolab.co/user/history';
+export const coinsUrl = 'https://coding-challenge-api.aerolab.co/user/points';
+export const redeemUrl = 'https://coding-challenge-api.aerolab.co/redeem';
+export const historyUrl = 'https://coding-challenge-api.aerolab.co/user/history';
 
 export const fetchUser = async () => {
     try {
@@ -22,7 +22,7 @@ export const fetchUser = async () => {
 
 export const postCoins = async (amount) => {
     try{
-        const response = await fetch(coins, {
+        const response = await fetch(coinsUrl, {
             method: "POST",
             headers,
             body: JSON.stringify({ amount: amount}),
@@ -36,7 +36,7 @@ export const postCoins = async (amount) => {
 
 export const getRedeem = async (productId) => {
     try{
-        const response = await fetch(redeem, {
+        const response = await fetch(redeemUrl, {
             method: "POST",
             headers,
             body: JSON.stringify({ productId: productId}),
