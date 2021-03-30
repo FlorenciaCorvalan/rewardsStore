@@ -1,34 +1,29 @@
-import React, { useContext, useEffect } from "react";
-import { Link } from "@reach/router";
-import { fetchUser } from "../Context/context";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
-import modal from "../functions/modal";
+import Modal from "../functions/modal";
 import Points from "./Points";
 
 export default function Header() {
-  const { userData, points, setUserData, setPoints } = useContext(UserContext);
-  const { clicka, opens } = modal();
+  const [userData] = useContext(UserContext);
+  const { isOpen, opens } = Modal();
 
-  useEffect(() => {
-    fetchUser().then(
-      (data) => (setUserData(data.name), setPoints(data.points))
-    );
-  }, []);
+  
 
   return (
     <>
       <div>
         <div>
           <div onClick={opens}>Add Points</div>
-          <Points clicka={clicka} hide={opens} />
-          <Link to="RedeemHistory">
+          <Points isOpen={isOpen} hide={opens} />
+          <Link to="/redeem-history">
             <div>Redeem</div>
           </Link>
         </div>
         <div>
-          {userData != null ? userData: ""}
+          {userData.name}
           <div>
-            {points != "" ? points : ""}
+            {userData.points}
           </div>
         </div>
       </div>

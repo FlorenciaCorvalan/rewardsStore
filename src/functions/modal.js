@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 const Modal = () => {
-    const [clicka, setClicka] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     function opens() {
-        setClicka(!clicka);
+        setIsOpen(!isOpen);
     }
-    return { clicka, opens };
+    return { isOpen, opens };
 };
 
 export default Modal;

@@ -3,8 +3,8 @@ import { createPortal } from "react-dom";
 import Points from "../Points";
 
 const addCoins = document.getElementById("Coins");
-export default function Coins({ clicka, hide }) {
-  return clicka
+export default function Coins({ isOpen, hide }) {
+  return isOpen
     ? createPortal(
         <>
           <div>

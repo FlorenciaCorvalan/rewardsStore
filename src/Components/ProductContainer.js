@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../Context/UserContext";
+import { ContextProduct } from "../Context/ContextProducts";
 import { Product } from "./ProductCard";
-import { headers, productsUrl } from "../../Context/context";
+import { headers, productsUrl } from "../Context/contextAPI";
 import { ProductPages } from "./ProductPages";
 
 export default function ProductContainer() {

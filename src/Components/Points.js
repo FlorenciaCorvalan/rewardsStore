@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../Context/UserContext";
-import { postCoins } from "../Context/context";
+import { postCoins } from "../Context/contextAPI";
 import Loading from "./Loads";
 
 export default function Points() {
@@ -60,7 +60,13 @@ export default function Points() {
         </button>
       </div>
 
-      <p>{loading == true ? <Loading /> : <p className="CoinsAdded">{window}</p>}</p>
+      <div>
+        {loading == true ? (
+        <Loading /> 
+        ) : (
+        <p className="CoinsAdded">{window}</p>
+        )}
+      </div>
     </>
   );
 }

@@ -1,11 +1,11 @@
 import React from "react";
-import Container from "../Components/Redeemed/Container";
-import { Link } from "@reach/router";
+import Container from "../Components/Container";
+import { Link } from "react-router-dom";
 
-function BackHome() {
+function Header() {
     return(
         <div>
-            <Link to="/Home-page-shop">
+            <Link to="/">
                 Shop
             </Link>
         </div>
@@ -15,7 +15,7 @@ function BackHome() {
 export const RedeemedHistory = () => {
     return(
         <div>
-            <BackHome />
+            <Header />
             <Container />
         </div>
     );

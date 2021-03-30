@@ -1,19 +1,28 @@
 import React from "react";
-import { Router } from "@reach/router";
-import { UserProvider } from "./Context/UserContext"
 import { RedeemedHistory } from "./pages/RedeemHistory";
 import HomePage from "./pages/HomePage";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
 
 function App() {
-  return (
-    <UserProvider>
-      <Router>
-        <RedeemedHistory exact path="/RedeemHistory" />
-        
+  
 
-      </Router>
+  return (
+  
       
-    </UserProvider>
+      <Router>
+      
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/redeem-history" component={RedeemedHistory} />
+        </Switch>
+     
+      </Router>
+    
   );
 }
 

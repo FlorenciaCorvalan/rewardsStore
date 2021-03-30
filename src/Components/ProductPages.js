@@ -1,6 +1,6 @@
 import React from "react";
 
-export const ProductPages = ({itemsPerPage, paginate, historyComplete}) => {
+export const ProductPages = ({itemsPerPage, pagess, historyComplete}) => {
     const pageNumber =[];
     let i = 1;
     for (i; i<= Math.ceil(historyComplete / itemsPerPage); i++){
@@ -12,7 +12,7 @@ export const ProductPages = ({itemsPerPage, paginate, historyComplete}) => {
             <ul>{pageNumber.map((number) =>{
                 return(
                     <li key={number}>
-                        <button type="button" onClick={() => paginate(number)}>{number}</button>
+                        <button type="button" onClick={() => pagess(number)}>{number}</button>
                     </li>
                 );
             })}</ul>

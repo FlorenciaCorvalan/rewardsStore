@@ -1,19 +1,19 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../../Context/UserContext";
-import { getRedeem } from "../../Context/context";
+import { getRedeem } from "../../Context/contextAPI";
 import Loading from "../Loads";
 import { createPortal } from "react-dom";
 
 const addCoins = document.getElementById("Coins");
 
-export const Redeem = ({ clicka, hide, id, product }) => {
+export const Redeem = ({ isOpen, hide, id, product }) => {
   const { points, setPoints } = useContext(UserContext);
   const [error, setError] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [loading, setLoading] = useState(false);
   const [hover, setHover] = useState(false);
 
-  return clicka
+  return isOpen
     ? createPortal(
         <>
           <div>

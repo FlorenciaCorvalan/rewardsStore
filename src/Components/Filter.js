@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { UserContext } from "../Context/UserContext";
-
+import React, { useContext, useState } from "react";
+import { ContextProdusct } from "../Context/ContextProducts";
+import { ContextFilter } from "../Context/ContextFilter";
 
 const Filter = () => {
-  const { productData, setCategory } = useContext(UserContext);
+  
   return (
     <>
       <div>

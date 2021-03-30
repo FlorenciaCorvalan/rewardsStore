@@ -1,29 +1,23 @@
-import React, { useState, createContext, useEffect } from "react";
-import { fetchUser } from "./context";
+import React, { useState, createContext, useEffect } from 'react';
+import { fetchUser } from "./contextAPI";
+
 
 export const UserContext = createContext();
 
 export const UserProvider = (props) => {
-  const [userData, setUserData] = useState("");
-  const [productData, setProductData] = useState([]);
-  const [points, setPoints] = useState("");
-  const [category, setCategory] = useState({ category: "" });
+	const [userData, setUserData] = useState({
+		name: '',
+		points: 0
+	});
 
-  return (
-    <UserContext.Provider
-      value={{
-        userData,
-        setUserData,
-        productData,
-        setProductData,
-        points,
-        setPoints,
-        category,
-        setCategory,
-      }}
-    >
-      {" "}
-      {props.children}
-    </UserContext.Provider>
-  );
+	useEffect(() => {
+		fetchUser(setUserData);
+		//eslint-disable-next-line
+	}, []);
+
+	return (
+		<UserContext.Provider value={[userData, setUserData]}>
+			{props.children}
+		</UserContext.Provider>
+	);
 };
