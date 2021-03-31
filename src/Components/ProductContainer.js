@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ContextProduct } from "../Context/ContextProducts";
+import { ProductContext } from "../Context/ContextProducts";
+import { ContextFilter } from "../Context/ContextFilter";
 import { Product } from "./ProductCard";
 import { headers, productsUrl } from "../Context/contextAPI";
 import { ProductPages } from "./ProductPages";
@@ -8,51 +9,63 @@ export default function ProductContainer() {
   const [itemsPerPage, setItemsPerPage] = useState(16);
   const [currentPage, setCurrentPage] = useState(1);
   const [products, setProducts] = useState([]);
+  const [productData] = useContext(ProductContext);
   const [loading, setLoading] = useState(false);
-  const { productData, setProductData, category } = useContext(UserContext);
+  const [filter] = useContext(ContextFilter);
 
   useEffect(() => {
-    const fetchProductList = async () => {
-      setLoading(true);
-      const response = await fetch(productsUrl, { method: "GET", headers });
-      const data = await response.json();
-      setProducts(data);
-      setLoading(false);
-      setProductData(data);
-    };
-    fetchProductList();
-  }, []);
+    setProducts({...productData})
+  }, [productData]);
+
+  function filterPrice(x, y){
+    if (filter.price === 'lowest'){
+      return x.cost - y.cost;
+    } else if (filter.price === 'highest'){
+      return y.cost - x.cost;
+    } else{
+      return 0;
+    }
+  }
+
+  function takeFiltered(){
+    const filtered = productData.sort(filterPrice);
+    setProducts(filtered);
+  }
+
+  useEffect(()=>{
+    takeFiltered();
+  }, [filter]);
 
   const lastProduct = currentPage * itemsPerPage;
   const firstProduct = lastProduct - itemsPerPage;
-  let filtered = [];
+  //let //filtered = [];
 
-  productData.forEach((item) => {
-    if (category.category == "" ? true : category.category == item.category) {
-      filtered.push(item);
-    }
-  });
+ // productData.forEach((item) => {
+   // if (category.category == "" ? true : category.category == item.category) {
+     // filtered.push(item);
+   // }
+ // });
 
-  const currentProducts = filtered.slice(firstProduct, lastProduct);
+  const currentProducts = products.slice(firstProduct, lastProduct);
 
   const pagess = (pageNumber) => setCurrentPage(pageNumber);
 
-  const MaxPages = Math.ceil(filtered.length / itemsPerPage);
-  if (filtered.length && currentPage > MaxPages) pagess(MaxPages);
+  const MaxPages = Math.ceil(products.length / itemsPerPage);
+  if (products.length && currentPage > MaxPages) pagess(MaxPages);
 
   return (
     <div>
       <div>
-        {currentProducts.map((item, index) => {
-          return (
-            <Product data={item} key={`${item}-${index}`} loading={loading} />
-          );
-        })}
+        {currentProducts.map((product) =>(   
+         
+            <Product {...product} key={product._id}  />
+          
+        ))}
       </div>
       <hr />
 
       <ProductPages
-        historyComplete={filtered.length}
+        historyComplete={products.length}
         itemsPerPage={itemsPerPage}
         pagess={pagess}
       />

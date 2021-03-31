@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
-import Modal from "../functions/modal";
+import Modal1 from "./Modal";
 import Points from "./Points";
 
 export default function Header() {

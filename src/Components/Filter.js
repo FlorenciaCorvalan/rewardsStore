@@ -1,30 +1,27 @@
 import React, { useContext, useState } from "react";
-import { ContextProdusct } from "../Context/ContextProducts";
+import { ProductContext } from "../Context/ContextProducts";
 import { ContextFilter } from "../Context/ContextFilter";
 
 const Filter = () => {
+  const [filter, setFilter] = useContext(ContextFilter);
   
   return (
     <>
       <div>
         <div>
-          <label>Filter by category</label>
+          <label>Filter by PRICE</label>
           <select
-            name="category"
-            value={productData.category}
+            name="price"
+            value={filter.price}
             onChange={(e) => {
-              const value = e.target.value;
-              setCategory({ ...productData, [e.target.name]: value });
+              let {name, value } = e.target;
+              setFilter({ ...filter, [name]: value });
             }}
           >
-            <option value="">Select category</option>
-            {[...new Set(productData.map((e) => e.category))]
-              .sort()
-              .map((item, index) => (
-                <option key={`${item}-${index}`} value={item}>
-                  {item}
-                </option>
-              ))}
+            <option value={'all prices'}>Select price</option>
+            <option value={'lowest'}>Lowest</option>
+            <option value={'highest'}>Highest</option>
+              
           </select>
         </div>
         <hr />
