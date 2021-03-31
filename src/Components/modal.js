@@ -1,12 +1,15 @@
 import { useState } from "react";
-//import Modal from "@material-ui/core/Modal";
+import Modal from "@material-ui/core/Modal";
 
 const Modal1 = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { productRedeem, userPoints, productId, productCost,  success } = props;
+  const { productRedeem, userPoints, productCost, productId,  success } = props;
 
   function opens() {
-    setIsOpen(!isOpen);
+    setIsOpen(true);
+  }
+  function closes(){
+    setIsOpen(false);
   }
   return (
     <div>
@@ -19,10 +22,11 @@ const Modal1 = (props) => {
       >
         Redeem
       </button>
-      <div
+      <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         isOpen={isOpen}
+        onClose={closes}
         closeAfterTransition
         BackdropProps={{
           timeout: 500,
@@ -31,7 +35,7 @@ const Modal1 = (props) => {
         <div>
           <div>{success ? "Redeem succes" : "Error"}</div>
         </div>
-      </div>
+      </Modal>
     </div>
   );
 };

@@ -10,11 +10,16 @@ export const coinsUrl = "https://coding-challenge-api.aerolab.co/user/points";
 export const redeemUrl = "https://coding-challenge-api.aerolab.co/redeem";
 export const historyUrl = "https://coding-challenge-api.aerolab.co/user/history";
 
-export const fetchUser = async () => {
+export const fetchUser = async (setUserData) => {
+  let requestOptions = {
+		method: 'GET',
+    headers: headers,
+    redirect: 'follow'
+  };
   try {
-    const response = await fetch(user, { method: "GET", headers });
-    const data = await response.json();
-    return data;
+    const response = await fetch(user, requestOptions);
+    const newUser = await response.json();
+    setUserData(newUser);
   } catch (error) {
     console.log(error);
   }
@@ -51,16 +56,19 @@ export const postCoins = async (amount) => {
 };
 
 export const getRedeem = async (productId) => {
+  let jason= JSON.stringify({ productId: productId});
+  let requestOptions = {
+		method: 'POST',
+    headers: headers,
+    body: jason,
+		redirect: 'follow'
+	};
   try {
-    const response = await fetch(redeemUrl, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ productId: productId }),
-    });
-    const data = await response.json();
-    return data;
+    await fetch(redeemUrl, requestOptions);
+    return true;
   } catch (error) {
     console.log(error);
+    return false;
   }
 };
 

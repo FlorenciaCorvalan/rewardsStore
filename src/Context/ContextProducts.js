@@ -13,8 +13,8 @@ export const ProductProvider = (props) => {
       img: {
         hdUrl: "",
         url: "",
-      },
-    },
+      }
+    }
   ]);
 
   useEffect(() => {

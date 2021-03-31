@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getRedeem } from "../Context/contextAPI";
-import Modal1 from "./Modal"
+import Modal1 from "./Modal";
 
 const HandleHover = (props) => {
     const { userData, setUserData, userPoints, productCost, productId } = props;

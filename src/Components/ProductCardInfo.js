@@ -1,5 +1,5 @@
 import React from "react";
-import { productsUrl } from "../Context/contextAPI";
+
 
 const CardiInfo = (props) => {
     const { productCost, userPoints } = props;

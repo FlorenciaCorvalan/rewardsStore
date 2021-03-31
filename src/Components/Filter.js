@@ -1,9 +1,21 @@
 import React, { useContext, useState } from "react";
-import { ProductContext } from "../Context/ContextProducts";
 import { ContextFilter } from "../Context/ContextFilter";
 
 const Filter = () => {
+  const [open, setOpen] = useState(false);
   const [filter, setFilter] = useContext(ContextFilter);
+
+  function closes(){
+    setOpen(false)
+  }
+  function opens(){
+    setOpen(true)
+  }
+  function takeFiltered(event){
+    let { name, value } = event.target;
+		const newData = { ...filter, [name]: value };
+		setFilter(newData);
+  }
   
   return (
     <>
@@ -13,10 +25,10 @@ const Filter = () => {
           <select
             name="price"
             value={filter.price}
-            onChange={(e) => {
-              let {name, value } = e.target;
-              setFilter({ ...filter, [name]: value });
-            }}
+            onChange={takeFiltered}
+            onClose={closes}
+            onOpen={opens}
+            open={open}
           >
             <option value={'all prices'}>Select price</option>
             <option value={'lowest'}>Lowest</option>

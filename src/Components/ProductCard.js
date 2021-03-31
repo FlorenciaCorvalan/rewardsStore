@@ -1,20 +1,16 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import CardiInfo from "./ProductCardInfo";
-import { Redeem } from "./Views/RedeemView";
 import HandleHover from "./HandleHover";
 import Loading from "./Loads";
 
-export const Product = ({ props, loading }) => {
+export const Product = (props) => {
   const { name, category, img, cost, _id } = props;
   const [userData, setUserData] = useContext(UserContext);
   const userPoints = userData.points;
-  const [product, setProduct] = useState([]);
   const [hover, setHover] = useState(false);
 
-  if (loading) {
-    return <Loading />;
-  }
+  
 
   return (
     <div

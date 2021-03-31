@@ -2,73 +2,87 @@ import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../Context/ContextProducts";
 import { ContextFilter } from "../Context/ContextFilter";
 import { Product } from "./ProductCard";
-import { headers, productsUrl } from "../Context/contextAPI";
-import { ProductPages } from "./ProductPages";
+import Filter from "./Filter";
+import Filter2 from "./FilterCategories";
+import Paginate from "./Paginate";
+import Pagination from "@material-ui/lab/Pagination";
 
 export default function ProductContainer() {
-  const [itemsPerPage, setItemsPerPage] = useState(16);
   const [currentPage, setCurrentPage] = useState(1);
-  const [products, setProducts] = useState([]);
+  const [productsPage, setProductsPage] = useState([]);
   const [productData] = useContext(ProductContext);
-  const [loading, setLoading] = useState(false);
   const [filter] = useContext(ContextFilter);
+  const ITEMS = 16;
 
   useEffect(() => {
-    setProducts({...productData})
+    setProductsPage({ ...productData });
   }, [productData]);
 
-  function filterPrice(x, y){
-    if (filter.price === 'lowest'){
+  function filterCategory(product){
+    const productCategory = product.category;
+		const filterCategory = filter.category;
+
+		return (
+			filterCategory === 'all categories' ||
+			filterCategory === productCategory.toLowerCase()
+		);
+  }
+
+
+  function filterPrice(x, y) {
+    if (filter.price === "lowest") {
       return x.cost - y.cost;
-    } else if (filter.price === 'highest'){
+    } else if (filter.price === "highest") {
       return y.cost - x.cost;
-    } else{
+    } else {
       return 0;
     }
   }
 
-  function takeFiltered(){
-    const filtered = productData.sort(filterPrice);
-    setProducts(filtered);
+  
+  function takeFiltered() {
+    const filteredCtgry = productData.filter(filterCategory)
+    const filtered = filteredCtgry.sort(filterPrice);
+    setProductsPage(filtered);
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     takeFiltered();
+    // eslint-disable-next-line
   }, [filter]);
 
-  const lastProduct = currentPage * itemsPerPage;
-  const firstProduct = lastProduct - itemsPerPage;
-  //let //filtered = [];
+  const pagge = Math.ceil(productsPage.length / ITEMS);
+  const paginated = Paginate(productsPage, ITEMS);
 
- // productData.forEach((item) => {
-   // if (category.category == "" ? true : category.category == item.category) {
-     // filtered.push(item);
-   // }
- // });
-
-  const currentProducts = products.slice(firstProduct, lastProduct);
-
-  const pagess = (pageNumber) => setCurrentPage(pageNumber);
-
-  const MaxPages = Math.ceil(products.length / itemsPerPage);
-  if (products.length && currentPage > MaxPages) pagess(MaxPages);
+  function takePages(event, paged) {
+    setCurrentPage(paged);
+    paginated.jumpToPage(paged);
+  }
 
   return (
     <div>
       <div>
-        {currentProducts.map((product) =>(   
-         
-            <Product {...product} key={product._id}  />
-          
-        ))}
+        <div>
+          <Filter />
+          <Filter2 />
+        </div>
+        <div>
+          <p>
+            {currentPage} of {pagge}
+          </p>
+          <Pagination
+            pagge={pagge}
+            variant="outlined"
+            page={currentPage}
+            onChange={takePages}
+          />
+        </div>
+        <div>
+          {paginated.currentData().map((product) => (
+            <Product {...product} key={product._id} />
+          ))}
+        </div>
       </div>
-      <hr />
-
-      <ProductPages
-        historyComplete={products.length}
-        itemsPerPage={itemsPerPage}
-        pagess={pagess}
-      />
     </div>
   );
 }
