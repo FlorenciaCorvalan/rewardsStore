@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ProductContext } from "../Context/ContextProducts";
 import { ContextFilter } from "../Context/ContextFilter";
+import Select from '@material-ui/core/Select';
 
 const Filter2 = () => {
   const [productData] = useContext(ProductContext);
@@ -28,7 +29,7 @@ const Filter2 = () => {
       <div>
         <div>
           <label>Filter by category</label>
-          <select
+          <Select
             name="category"
             open={open}
             value={filter.category}
@@ -42,7 +43,7 @@ const Filter2 = () => {
                 {category}
               </option>
             ))}
-          </select>
+          </Select>
         </div>
         <hr />
       </div>

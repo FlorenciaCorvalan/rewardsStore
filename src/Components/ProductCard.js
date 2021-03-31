@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import CardiInfo from "./ProductCardInfo";
 import HandleHover from "./HandleHover";
-import Loading from "./Loads";
+
 
 export const Product = (props) => {
   const { name, category, img, cost, _id } = props;
@@ -26,7 +26,7 @@ export const Product = (props) => {
           productId={_id}
         />
       )}
-      <CardiInfo productCost={cost} userPoints={userPoints} />
+      <CardiInfo productCost={cost} userPoints={userPoints} hover={hover} />
       <img src={img.url} alt="imagen del producto" />
       <div>
         <p>{category}</p>

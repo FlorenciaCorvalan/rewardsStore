@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ContextFilter } from "../Context/ContextFilter";
+import Select from '@material-ui/core/Select';
 
 const Filter = () => {
   const [open, setOpen] = useState(false);
@@ -22,7 +23,7 @@ const Filter = () => {
       <div>
         <div>
           <label>Filter by PRICE</label>
-          <select
+          <Select
             name="price"
             value={filter.price}
             onChange={takeFiltered}
@@ -34,7 +35,7 @@ const Filter = () => {
             <option value={'lowest'}>Lowest</option>
             <option value={'highest'}>Highest</option>
               
-          </select>
+          </Select>
         </div>
         <hr />
       </div>

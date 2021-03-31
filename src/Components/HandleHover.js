@@ -4,23 +4,24 @@ import Modal1 from "./Modal";
 
 const HandleHover = (props) => {
     const { userData, setUserData, userPoints, productCost, productId } = props;
-    const [success, setSucces] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     function productRedeem(id, cost, userPoints){
         const redeemProd = getRedeem(id);
         const pointsActual = userPoints-cost;
-        setUserData({...userData, points: pointsActual});
-        setSucces(redeemProd);
+        setUserData({ ...userData, points: pointsActual });
+        setSuccess(redeemProd);
     }
 
     return(
         <div>
             <div>{productCost.toLocaleString('de-De')}</div>
             {userPoints >= productCost && (
-                <Modal1 userPoints={userPoints}
-                productId={productId}
+                <Modal1
+                productRedeem={productRedeem} 
+                userPoints={userPoints}
                 productCost={productCost}
-                productRedeem={productRedeem}
+                productId={productId}
                 success={success}
                 />
             )}

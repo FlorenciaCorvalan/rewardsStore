@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../Context/ContextProducts";
 import { ContextFilter } from "../Context/ContextFilter";
-import { Product } from "./ProductCard";
+import Product from "./ProductCard";
 import Filter from "./Filter";
 import Filter2 from "./FilterCategories";
-import Paginate from "./Paginate";
+import usePagination from "./Paginate";
 import Pagination from "@material-ui/lab/Pagination";
 
 export default function ProductContainer() {
@@ -15,19 +15,18 @@ export default function ProductContainer() {
   const ITEMS = 16;
 
   useEffect(() => {
-    setProductsPage({ ...productData });
+    setProductsPage([...productData]);
   }, [productData]);
 
-  function filterCategory(product){
+  function filterCategory(product) {
     const productCategory = product.category;
-		const filterCategory = filter.category;
+    const filterCategory = filter.category;
 
-		return (
-			filterCategory === 'all categories' ||
-			filterCategory === productCategory.toLowerCase()
-		);
+    return (
+      filterCategory === "all categories" ||
+      filterCategory === productCategory.toLowerCase()
+    );
   }
-
 
   function filterPrice(x, y) {
     if (filter.price === "lowest") {
@@ -39,9 +38,8 @@ export default function ProductContainer() {
     }
   }
 
-  
   function takeFiltered() {
-    const filteredCtgry = productData.filter(filterCategory)
+    const filteredCtgry = productData.filter(filterCategory);
     const filtered = filteredCtgry.sort(filterPrice);
     setProductsPage(filtered);
   }
@@ -51,8 +49,8 @@ export default function ProductContainer() {
     // eslint-disable-next-line
   }, [filter]);
 
-  const pagge = Math.ceil(productsPage.length / ITEMS);
-  const paginated = Paginate(productsPage, ITEMS);
+  const cont = Math.ceil(productsPage.length / ITEMS);
+  const paginated = usePagination(productsPage, ITEMS);
 
   function takePages(event, paged) {
     setCurrentPage(paged);
@@ -68,10 +66,10 @@ export default function ProductContainer() {
         </div>
         <div>
           <p>
-            {currentPage} of {pagge}
+            {currentPage} of {cont}
           </p>
           <Pagination
-            pagge={pagge}
+            count={cont}
             variant="outlined"
             page={currentPage}
             onChange={takePages}
@@ -81,6 +79,18 @@ export default function ProductContainer() {
           {paginated.currentData().map((product) => (
             <Product {...product} key={product._id} />
           ))}
+        </div>
+
+        <div>
+          <p>
+            {currentPage} of {cont}
+          </p>
+          <Pagination
+            count={cont}
+            variant="outlined"
+            page={currentPage}
+            onChange={takePages}
+          />
         </div>
       </div>
     </div>

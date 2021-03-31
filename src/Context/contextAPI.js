@@ -67,7 +67,7 @@ export const getRedeem = async (productId) => {
     await fetch(redeemUrl, requestOptions);
     return true;
   } catch (error) {
-    console.log(error);
+    console.log("error", error);
     return false;
   }
 };
