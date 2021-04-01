@@ -25,7 +25,7 @@ const Filter = () => {
     <>
       <div>
         <FormControl>
-          <InputLabel>Filter by PRICE</InputLabel>
+          <InputLabel>Filter by price</InputLabel>
           <Select
             name="price"
             value={filter.price}

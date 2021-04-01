@@ -8,12 +8,13 @@ export default function Points() {
   function forCoins(amount) {
     postCoins(amount, userData, setUserData);
   }
+  
 
   return (
     <>
-      <div>ADD MORE COINS</div>
-      <div>
-        <button
+      <div id="coins">ADD MORE COINS</div>
+      <div id="getcoins">
+        <button className="button" 
           onClick={() => {
             forCoins(1000);
           }}
@@ -21,7 +22,7 @@ export default function Points() {
           1000
         </button>
 
-        <button
+        <button className="button"
           onClick={() => {
             forCoins(5000);
           }}
@@ -29,14 +30,13 @@ export default function Points() {
           5000
         </button>
 
-        <button
-          onClick={() => {
-            forCoins(7000);
-          }}
-        >
-          7500
-        </button>
+        <button className="button" onClick={() => {
+          forCoins(7000);
+        }}>
+          7500</button>
       </div>
+
+      
     </>
   );
 }

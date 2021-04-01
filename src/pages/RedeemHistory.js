@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Redeemed from "../Components/Redeemed";
 import { fecthHistory } from "../Context/contextAPI";
+import HomeHeader from "../Components/HomeHeader";
 
 
 export default function RedeemedHistory() {
@@ -15,6 +16,7 @@ export default function RedeemedHistory() {
 
   return (
     <div>
+      <HomeHeader />
         <h6>Reedeem</h6>
 
         <div>{listRedeem.map((product) => (

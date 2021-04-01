@@ -7,6 +7,8 @@ import { UserProvider } from "./Context/UserContext";
 import { ProductProvider } from "./Context/ContextProducts";
 import { FilterProvider } from "./Context/ContextFilter";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./style.css";
+
 
 function App() {
   return (

@@ -6,6 +6,7 @@ import Filter from "./Filter";
 import Filter2 from "./FilterCategories";
 import usePagination from "./Paginate";
 import Pagination from "@material-ui/lab/Pagination";
+import styled from "styled-components";
 
 export default function ProductContainer() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -60,10 +61,10 @@ export default function ProductContainer() {
   return (
     <div>
       <div>
-        <div>
+        <FilterContainer>
           <Filter />
           <Filter2 />
-        </div>
+        </FilterContainer>
         <div>
           <p>
             {currentPage} of {cont}
@@ -75,11 +76,11 @@ export default function ProductContainer() {
             onChange={takePages}
           />
         </div>
-        <div>
+        <Container>
           {paginated.currentData().map((product) => (
             <Product {...product} key={product._id} />
           ))}
-        </div>
+        </Container>
 
         <div>
           <p>
@@ -96,3 +97,16 @@ export default function ProductContainer() {
     </div>
   );
 }
+
+const FilterContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 10px;
+`;
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+`;

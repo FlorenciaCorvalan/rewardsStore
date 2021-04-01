@@ -6,9 +6,10 @@ export const headers = {
 
 export const user = "https://coding-challenge-api.aerolab.co/user/me";
 export const productsUrl = "https://coding-challenge-api.aerolab.co/products";
-export const coinsUrl = "https://coding-challenge-api.aerolab.co/user/points";
 export const redeemUrl = "https://coding-challenge-api.aerolab.co/redeem";
 export const historyUrl = "https://coding-challenge-api.aerolab.co/user/history";
+export const coinsUrl = "https://coding-challenge-api.aerolab.co/user/points";
+const API_URL = 'https://coding-challenge-api.aerolab.co';
 
 export const fetchUser = async (setUserData) => {
   let requestOptions = {
@@ -50,14 +51,14 @@ export const postCoins = async (amount, userData, setUserData) => {
 		redirect: 'follow'
 	};
   try {
-    const response = await fetch(coinsUrl, requestOptions);
-    const dataPoints = await response.json();
+    const response = await fetch(`${API_URL}/user/points`, requestOptions);
+    const newPointsData  = await response.json();
 
-    const dataPointsState = { ...userData };
-    dataPointsState.points = dataPoints['new poinst'];
-    setUserData(dataPointsState);
+    const newPointsState  = { ...userData };
+    newPointsState.points = newPointsData['New Points'];
+    setUserData(newPointsState);
   } catch (error) {
-    console.log(error);
+    console.log("error", error);
   }
 };
 
