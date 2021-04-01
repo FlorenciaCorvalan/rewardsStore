@@ -5,7 +5,6 @@ import ProductConatiner from "../Components/ProductContainer";
 const HomePage = () => {
     return(
         <>
-        <Header />
         <ProductConatiner />
         </>
     );

@@ -25,7 +25,7 @@ const Modal1 = (props) => {
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
-        isOpen={isOpen}
+        open={isOpen}
         onClose={closes}
         closeAfterTransition
         BackdropProps={{

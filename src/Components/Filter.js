@@ -1,28 +1,31 @@
 import React, { useContext, useState } from "react";
 import { ContextFilter } from "../Context/ContextFilter";
-import Select from '@material-ui/core/Select';
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 
 const Filter = () => {
   const [open, setOpen] = useState(false);
   const [filter, setFilter] = useContext(ContextFilter);
 
-  function closes(){
-    setOpen(false)
+  function closes() {
+    setOpen(false);
   }
-  function opens(){
-    setOpen(true)
+  function opens() {
+    setOpen(true);
   }
-  function takeFiltered(event){
+  function takeFiltered(event) {
     let { name, value } = event.target;
-		const newData = { ...filter, [name]: value };
-		setFilter(newData);
+    const newData = { ...filter, [name]: value };
+    setFilter(newData);
   }
-  
+
   return (
     <>
       <div>
-        <div>
-          <label>Filter by PRICE</label>
+        <FormControl>
+          <InputLabel>Filter by PRICE</InputLabel>
           <Select
             name="price"
             value={filter.price}
@@ -31,12 +34,11 @@ const Filter = () => {
             onOpen={opens}
             open={open}
           >
-            <option value={'all prices'}>Select price</option>
-            <option value={'lowest'}>Lowest</option>
-            <option value={'highest'}>Highest</option>
-              
+            <MenuItem value={"all prices"}>Select price</MenuItem>
+            <MenuItem value={"lowest"}>Lowest</MenuItem>
+            <MenuItem value={"highest"}>Highest</MenuItem>
           </Select>
-        </div>
+        </FormControl>
         <hr />
       </div>
     </>

@@ -1,19 +1,20 @@
 import React from "react";
 
 
-export const Redeemed = (props) => {
-  
-
+const Redeemed = (props) => {
   return (
     <div>
-      <img src={props.img.url} alt="" />
+      <img src={props.img.url} alt="Imagen del Producto" />
 
       <div>
         <p>{props.name}</p>
         <div>
+          <p>Cost</p>
           {props.cost}
         </div>
       </div>
     </div>
   );
 };
+
+export default Redeemed;

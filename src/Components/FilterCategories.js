@@ -1,7 +1,10 @@
 import React, { useContext, useState } from "react";
 import { ProductContext } from "../Context/ContextProducts";
 import { ContextFilter } from "../Context/ContextFilter";
-import Select from '@material-ui/core/Select';
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 
 const Filter2 = () => {
   const [productData] = useContext(ProductContext);
@@ -27,8 +30,8 @@ const Filter2 = () => {
   return (
     <>
       <div>
-        <div>
-          <label>Filter by category</label>
+        <FormControl>
+          <InputLabel>Filter by category</InputLabel>
           <Select
             name="category"
             open={open}
@@ -37,14 +40,14 @@ const Filter2 = () => {
             onClose={closes}
             onOpen={opens}
           >
-            <option value={"all categories"}>Select category</option>
+            <MenuItem value={"all categories"}>Select category</MenuItem>
             {categories.map((category) => (
-              <option key={category} value={category.toLowerCase()}>
+              <MenuItem key={category} value={category.toLowerCase()}>
                 {category}
-              </option>
+              </MenuItem>
             ))}
           </Select>
-        </div>
+        </FormControl>
         <hr />
       </div>
     </>

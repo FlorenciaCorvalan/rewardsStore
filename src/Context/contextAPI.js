@@ -41,15 +41,21 @@ export const getProducts = async (setProductData) => {
 	}
 }; 
 
-export const postCoins = async (amount) => {
+export const postCoins = async (amount, userData, setUserData) => {
+  let jason=JSON.stringify({ amount: amount});
+  let requestOptions = {
+		method: 'POST',
+    headers: headers,
+    body: jason,
+		redirect: 'follow'
+	};
   try {
-    const response = await fetch(coinsUrl, {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ amount: amount }),
-    });
-    const data = await response.json();
-    return data;
+    const response = await fetch(coinsUrl, requestOptions);
+    const dataPoints = await response.json();
+
+    const dataPointsState = { ...userData };
+    dataPointsState.points = dataPoints['new poinst'];
+    setUserData(dataPointsState);
   } catch (error) {
     console.log(error);
   }
