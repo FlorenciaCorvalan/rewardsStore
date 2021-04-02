@@ -1,12 +1,20 @@
 import React from "react";
-import imgH from "../assets/header-x1.png";
+import imgH from "../assets/header-x2.png";
+import styled from "styled-components";
+
 const HomeHeader = () => {
     
     return(
-        <div>
+        <Encabeza>
+          <h1>Rewards Store</h1>
         <img src={imgH} alt="Header Imagen" id="headerImg" />
-      </div>
+      </Encabeza>
     );
 }
 
 export default HomeHeader;
+
+const Encabeza = styled.div`
+  width:100%;
+
+`;

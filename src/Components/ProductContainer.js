@@ -59,15 +59,15 @@ export default function ProductContainer() {
   }
 
   return (
-    <div>
+    <Absolute>
       <div>
         <FilterContainer>
           <Filter />
           <Filter2 />
         </FilterContainer>
-        <div>
-          <p>
-            {currentPage} of {cont}
+        <Pages>
+          <p className="pages">
+            Page {currentPage} of {cont}
           </p>
           <Pagination
             count={cont}
@@ -75,16 +75,16 @@ export default function ProductContainer() {
             page={currentPage}
             onChange={takePages}
           />
-        </div>
+        </Pages>
         <Container>
           {paginated.currentData().map((product) => (
             <Product {...product} key={product._id} />
           ))}
         </Container>
 
-        <div>
-          <p>
-            {currentPage} of {cont}
+        <Pages>
+          <p className="pages">
+            Page {currentPage} of {cont}
           </p>
           <Pagination
             count={cont}
@@ -92,9 +92,9 @@ export default function ProductContainer() {
             page={currentPage}
             onChange={takePages}
           />
-        </div>
+        </Pages>
       </div>
-    </div>
+    </Absolute>
   );
 }
 
@@ -108,5 +108,21 @@ const FilterContainer = styled.div`
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+  grid-gap: 10px;
+
+  @media (max-width: 899px){
+    display: flex;
+    flex-direction: column;
+   
+  }
+`;
+const Absolute = styled.div`
+  margin-left: 5%;
+  margin-right: 5%;
+`;
+
+const Pages = styled.div`
+  margin-bottom: 25px;
+  margin-top:30px;
+
 `;

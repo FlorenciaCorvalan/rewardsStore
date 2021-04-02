@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../Context/UserContext";
 import CardiInfo from "./ProductCardInfo";
 import HandleHover from "./HandleHover";
-
+import styled from "styled-components";
 
 export const Product = (props) => {
   const { name, category, img, cost, _id } = props;
@@ -13,7 +13,7 @@ export const Product = (props) => {
   
 
   return (
-    <div
+    <ProductContainer
       onMouseLeave={() => setHover(false)}
       onMouseEnter={() => setHover(true)}
     >
@@ -28,12 +28,26 @@ export const Product = (props) => {
       )}
       <CardiInfo productCost={cost} userPoints={userPoints} hover={hover} />
       <img src={img.url} alt="imagen del producto" />
-      <div>
+      <div id="dataProduct">
         <p>{category}</p>
         <p>{name}</p>
       </div>
-    </div>
+    </ProductContainer>
   );
 };
 
 export default Product;
+
+
+const ProductContainer = styled.div`
+margin: 0.5rem;
+padding: 0.8rem;
+width: 70%;
+border: 0.5px solid #e4e1e1;
+border-radius: 5px;
+display: flex;
+flex-direction: column;
+align-items: center;
+position: relative;
+z-index: 5;
+`;

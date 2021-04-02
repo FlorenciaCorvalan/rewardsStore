@@ -30,8 +30,10 @@ export default function Header() {
         </HeaderPages>
         <UserData>
           {userData.name}
-          <div id="userPoint"><p id="userpoint">{userData.points}</p>
-          <img src={coins} alt="moneda" /></div>
+          <div id="userPoint">
+            <p id="userpoint">{userData.points}</p>
+            <img src={coins} alt="moneda" />
+          </div>
         </UserData>
       </HeaderContainer>
     </>
@@ -50,7 +52,6 @@ const HeaderPages = styled.div`
   justify-content: space-around;
   text-decoration: none;
   font-weight: bold;
-  
 `;
 const UserData = styled.div`
   display: flex;

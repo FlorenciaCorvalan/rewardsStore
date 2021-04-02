@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Redeemed from "../Components/Redeemed";
 import { fecthHistory } from "../Context/contextAPI";
 import HomeHeader from "../Components/HomeHeader";
-
+import styled from "styled-components";
 
 export default function RedeemedHistory() {
   const [historys, setHistorys] = useState([]);
@@ -17,15 +17,19 @@ export default function RedeemedHistory() {
   return (
     <div>
       <HomeHeader />
-        <h6>Reedeem</h6>
+      <h6 id="redeemeed">REDEEMED HISTORY</h6>
 
-        <div>{listRedeem.map((product) => (
-            <Redeemed  {...product} key={product.createDate} />
+      <HistoryContainer>
+        {listRedeem.map((product) => (
+          <Redeemed {...product} key={product.createDate} />
         ))}
-      
-            </div>
-      
-      
+      </HistoryContainer>
     </div>
   );
 }
+
+const HistoryContainer = styled.div`
+  text-align: center;
+  margin-left:36%;
+
+`;
