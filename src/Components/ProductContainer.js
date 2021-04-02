@@ -124,5 +124,4 @@ const Absolute = styled.div`
 const Pages = styled.div`
   margin-bottom: 25px;
   margin-top:30px;
-
 `;

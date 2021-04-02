@@ -30,6 +30,5 @@ export default function RedeemedHistory() {
 
 const HistoryContainer = styled.div`
   text-align: center;
-  margin-left:36%;
-
+  margin-left: 36%;
 `;
