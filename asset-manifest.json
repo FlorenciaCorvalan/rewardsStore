@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/rewardsStore/static/css/main.a278cd30.chunk.css",
+    "main.js": "/rewardsStore/static/js/main.0f57e36f.chunk.js",
+    "main.js.map": "/rewardsStore/static/js/main.0f57e36f.chunk.js.map",
+    "runtime-main.js": "/rewardsStore/static/js/runtime-main.6c0dd4ba.js",
+    "runtime-main.js.map": "/rewardsStore/static/js/runtime-main.6c0dd4ba.js.map",
+    "static/js/2.a2621a3f.chunk.js": "/rewardsStore/static/js/2.a2621a3f.chunk.js",
+    "static/js/2.a2621a3f.chunk.js.map": "/rewardsStore/static/js/2.a2621a3f.chunk.js.map",
+    "index.html": "/rewardsStore/index.html",
+    "static/css/main.a278cd30.chunk.css.map": "/rewardsStore/static/css/main.a278cd30.chunk.css.map",
+    "static/js/2.a2621a3f.chunk.js.LICENSE.txt": "/rewardsStore/static/js/2.a2621a3f.chunk.js.LICENSE.txt",
+    "static/media/OK_icon.048fdf9d.svg": "/rewardsStore/static/media/OK_icon.048fdf9d.svg",
+    "static/media/buy-blue.c5c4f01c.svg": "/rewardsStore/static/media/buy-blue.c5c4f01c.svg",
+    "static/media/buy-white.9b6e6567.svg": "/rewardsStore/static/media/buy-white.9b6e6567.svg",
+    "static/media/coin.b8bc711d.svg": "/rewardsStore/static/media/coin.b8bc711d.svg",
+    "static/media/error.ed6a4996.svg": "/rewardsStore/static/media/error.ed6a4996.svg",
+    "static/media/header-x2.cc65119a.png": "/rewardsStore/static/media/header-x2.cc65119a.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6c0dd4ba.js",
+    "static/js/2.a2621a3f.chunk.js",
+    "static/css/main.a278cd30.chunk.css",
+    "static/js/main.0f57e36f.chunk.js"
+  ]
+}
